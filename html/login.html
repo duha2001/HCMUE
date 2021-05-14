@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/bootstrap.css" />
+        <script src="../js/jquery-3.6.0.js"></script>
+        <script src="../js/bootstrap.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2 col-md-2">
+                    Username
+                </div>
+                <div class="col-3 col-md-4">
+                    <input type="text" id="txtUser">
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-2">
+                    Password
+                </div>
+                <div class="col-3">
+                    <input type="password" id="txtPass">
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-5">
+                    <button id="btnLogin" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+            <div id="ketqua"></div>
+        </div>
+        <script>
+            $(function(){
+                $("#btnLogin").click(function(){
+                    let user = $("#txtUser");
+                    let pass = $("#txtPass")
+                    // $("#ketqua").html("User: " + user.val() 
+                    //     + ", pass: " + pass.val());
+
+                    //nếu là nút Logout
+                    if($(this).html() == "Logout"){
+                        user.show(); pass.show();
+                        user.val(''); pass.val('');
+                        $(this).html("Login");
+                        $("#ketqua").html("");
+                        return true;
+                    }
+
+                    if(user.val() == '' || pass.val() == ''){
+                        $("#ketqua").html("Chưa nhập đủ thông tin");
+                        return false;
+                    }
+
+                    if(user.val().length < 5 || pass.val().length < 5){
+                        $("#ketqua").html("Đăng nhập không thành công");
+                        return false;
+                    }
+                    $("#ketqua").html("Đăng nhập thành công");
+                    user.hide(); pass.hide();
+                    $(this).html("Logout");
+                });
+            });
+        </script>
+    </body>
+</html>
